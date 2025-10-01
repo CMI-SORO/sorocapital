@@ -86,9 +86,6 @@ body.nav-open {
   transform: scaleX(1);
 }
 
-.nav-links a:focus::after {
-  transform: scaleX(1);
-}
 
 .nav-toggle {
   display: none;
