@@ -13,7 +13,20 @@
     />
   </head>
   <body>
-    <header>
+    <nav class="top-nav">
+      <div class="nav-brand">Soro Capital</div>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <header id="home">
       <div class="logo">
         <!-- Fallback SVG logo since assets/images/logo.svg is missing -->
         <svg width="40" height="40" viewBox="0 0 40 40" aria-label="Soro Capital logo" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
@@ -29,7 +42,7 @@
       </p>
     </header>
     <main>
-      <section class="section" id="story">
+      <section class="section" id="about">
         <h2>Our Story</h2>
         <p>
           We specialize in working with owners who are ready to transition their
@@ -43,6 +56,32 @@
           done, relationships that have been carefully nurtured, and a legacy that
           deserves to be honored.
         </p>
+      </section>
+      <section class="section features" id="features">
+        <h2>What Sets Us Apart</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Personal Partnership</h3>
+            <p>
+              We collaborate closely with founders to protect the people, culture, and
+              legacy that make their businesses exceptional.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Operational Excellence</h3>
+            <p>
+              Our team brings hands-on experience to sustain durable cash flow and
+              elevate day-to-day operations for long-term success.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Enduring Stewardship</h3>
+            <p>
+              We invest with patience and integrity, ensuring the next chapter of your
+              business is built on stable growth and trusted leadership.
+            </p>
+          </article>
+        </div>
       </section>
       <section class="section" id="criteria">
         <h2>Acquisition Criteria</h2>
@@ -71,6 +110,25 @@
     </footer>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+      const navToggle = document.querySelector(".nav-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (navToggle && navLinks) {
+        navToggle.addEventListener("click", () => {
+          const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
+          navToggle.setAttribute("aria-expanded", String(!isExpanded));
+          navLinks.classList.toggle("open");
+          document.body.classList.toggle("nav-open");
+        });
+
+        navLinks.addEventListener("click", (event) => {
+          if (event.target.tagName === "A") {
+            navLinks.classList.remove("open");
+            navToggle.setAttribute("aria-expanded", "false");
+            document.body.classList.remove("nav-open");
+          }
+        });
+      }
     </script>
   </body>
 </html>
