@@ -92,13 +92,13 @@ body.nav-open {
 }
 
 
-a,
-a:visited {
+.content a,
+.content a:visited {
   color: var(--accent-color);
 }
 
-a:hover,
-a:focus-visible {
+.content a:hover,
+.content a:focus-visible {
   color: var(--accent-color-strong);
 }
 
