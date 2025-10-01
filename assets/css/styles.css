@@ -80,9 +80,6 @@ body.nav-open {
   color: var(--accent-color);
 }
 
-.nav-links a:focus {
-  color: var(--accent-color);
-}
 
 .nav-links a:hover::after,
 .nav-links a:focus-visible::after {
