@@ -109,7 +109,11 @@
       &copy; <span id="year"></span> Soro Capital. All rights reserved.
     </footer>
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
+      const yearElement = document.getElementById("year");
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+      }
+
       const navToggle = document.querySelector(".nav-toggle");
       const navLinks = document.querySelector(".nav-links");
 
@@ -119,6 +123,19 @@
           navToggle.setAttribute("aria-expanded", String(!isExpanded));
           navLinks.classList.toggle("open");
           document.body.classList.toggle("nav-open");
+        });
+
+        const navAnchorLinks = navLinks.querySelectorAll('a[href^="#"]');
+        navAnchorLinks.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            const targetId = link.getAttribute("href");
+            const targetElement = targetId ? document.querySelector(targetId) : null;
+
+            if (targetElement) {
+              event.preventDefault();
+              targetElement.scrollIntoView({ behavior: "smooth" });
+            }
+          });
         });
 
         navLinks.addEventListener("click", (event) => {
